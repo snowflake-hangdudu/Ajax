@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .result {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <button>点击发送请求</button>
+    <div class="result"></div>
+    <script>
+      const button = document.querySelector("button");
+      button.onclick = function () {
+        //创建对象
+        const xhr = new XMLHttpRequest();
+
+        //配置对象
+        xhr.open("GET", "http://127.0.0.1:9000/hello");
+
+        //发送请求
+        xhr.send();
+
+        //监听状态
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.status);
+
+            console.log(xhr.statusText);
+
+            console.log(xhr.getAllResponseHeaders);
+
+            console.log(xhr.response);
+
+            button.innerHTML = xhr.responseText;
+          }
+        };
+      };
+    </script>
+  </body>
+</html>
