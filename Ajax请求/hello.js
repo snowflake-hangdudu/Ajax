@@ -11,6 +11,7 @@ app.get("/hello", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
   res.send("hello world");
+  // res.render("index.html");
 });
 
 //监听端口

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      .result {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>axios发送ajax请求</h1>
+    <button>get</button>
+    <button>post</button>
+    <button>通用型方法</button>
+    <div class="result"></div>
+    <script>
+      const bts = document.querySelectorAll("button");
+      bts[0].onclick = function () {
+        axios
+          .get("http://127.0.0.1:9000/hello", {})
+          .then((res) => {
+            console.log(res);
+            bts[0].innerHTML = res.data;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+      bts[1].onclick = function () {
+        axios
+          .post("http://127.0.0.1:9000/hello")
+          .then((res) => {
+            console.log(res);
+            bts[1].innerHTML = res.data;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+      bts[2].onclick = function () {
+        axios
+          .get("http://127.0.0.1:9000/hello")
+          .then((res) => {
+            console.log(res);
+            bts[2].innerHTML = res.data;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+    </script>
+  </body>
+</html>
